@@ -124,6 +124,11 @@ public class AdvertisingService {
         if (state == null && fullname == null) {
             response = vehicleRepository.findAll();
         }
+
+        if(state != null && fullname == null) {
+            response = vehicleRepository.findByState(state);
+        }
+
         return new ApiCommonResponse(200, "", ApiResponseStatus.SUCCESS, Mapper.map(response));
     }
 }

@@ -1,22 +1,30 @@
-#SM360 Backend Tech Assignment
+## SM360 Backend Tech Assignment
 
-This project was build using java, spring boot framework and postgres database.
+This project was built using Java and the Spring boot framework. It uses a postgres database for storing data and implements the following endpoints.
 
-To run this project you need to install following tools :
+- /api/advertising
+    - **POST** : Create a new listing given a set of information on the vehicle and dealer (See request body in examples below).
+    - **PUT** : Update the information of an existing listing based on its' id.
 
-java version 8 or higher
+- /api/advertising/publish
+    - **PUT** : Change the status of a listing from DRAFT to PUBLISHED
 
-maven version 3 or higher
+- /api/advertising/unpublish
+    - **PUT** : Change the status of a listing from PUBLISHED to DRAFT
 
-postgresql database version or higher
+In order to be able to run this project, you would require the following tools:
+- Java (Version 8 or higher)
+- Maven (Version 3 or higher)
+- PostgreSQL database
 
-Go to resources folder and update application.properties file with database name, username and password 
+We would need to update the application.properties file with the username, password required to access the database server along with the name of the database that you would like to connect this application to.
 
-Run a command : mvn clean install package to build a project
+The next step would be to build the project using : `mvn clean install package`.
+This command would build an executable .jar for the project as well as run the necessary tests added to it.
 
-Run a command : java -jar target/backend-tech-assignment-1.0-SNAPSHOT.jar to launch on port 3000
+We can then run the project using `java -jar target/backend-tech-assignment-1.0-SNAPSHOT.jar` which would run the project on the port **3000**.
 
-See below some examples to test api using curl :
+Below are a few sample cURL requests to test the various endpoints implemented:
 
 ```
     curl --location --request POST 'http://localhost:3000/api/advertising' \

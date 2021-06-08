@@ -16,5 +16,5 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
 
     List<Vehicle> findByState(State state);
 
-    List<Vehicle> findByDealer_FirstNameLikeOrDealer_LastNameLike(String firstname, String lastname);
+
 }
