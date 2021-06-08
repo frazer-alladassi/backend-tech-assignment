@@ -99,4 +99,22 @@ class VehicleRepositoryTest {
         int currentListSize = vehicleList.size();
         assertThat(currentListSize).isEqualTo( initialListSize + 1);
     }
+
+    @Test
+    void findLikeDealerFirstNameOrLastName(){
+        // given
+        Dealer dealer = new Dealer("Toto", "Zozor", faker.phoneNumber().phoneNumber());
+        dealer = dealerRepository.save(dealer);
+        Vehicle vehicle = new Vehicle(faker.name().name(), "", "", "", "", "", "", "", 0, new Date(), State.DRAFT);
+        vehicle.setDealer(dealer);
+        vehicle = underTest.save(vehicle);
+        assertThat(0).isNotEqualTo(vehicle.getId());
+
+        // when
+        List<Vehicle> vehicleList = underTest.findByDealer_FirstNameLikeOrDealer_LastNameLike("%To%", "%Zoz%");
+
+        // then
+        int currentListSize = vehicleList.size();
+        assertThat(currentListSize).isEqualTo(1);
+    }
 }

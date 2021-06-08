@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface DealerRepository extends JpaRepository<Dealer, Long> {
 
     Dealer findOneByFirstName(String firstname);
+
+    Dealer findOneByFirstNameAndLastName(String firstname, String lastname);
 }
